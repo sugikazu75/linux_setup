@@ -11,7 +11,7 @@ https://qiita.com/hirooooooaki/items/f404e76c6f171769412a
 ## show git branch in prompt
 https://snowsystem.net/other/linux/ubuntu-git-branch
 
-## ros
+## ROS melodic
 http://wiki.ros.org/melodic/Installation/Ubuntu
 
 ## ワークスペースの数を静的にする
