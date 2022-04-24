@@ -118,6 +118,7 @@ fi
 
 source /opt/ros/melodic/setup.bash
 source ~/ros/kxr_ws/devel/setup.bash
+source ~/catkin_ws/devel/setup.bash
 
 #git branch表示
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] '
