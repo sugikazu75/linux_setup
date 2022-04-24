@@ -136,6 +136,8 @@ PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'auto_cdls
 #user alias
 alias emacs="emacs -nw"
 
-
+#mujoco_py
 export LD_LIBRARY_PATH=/home/$USER/.mujoco/mujoco210/bin:$LD_LIBRARY_PATH
+
+#esp-idf
 alias get-idf='. $HOME/esp/esp-idf/export.sh'
