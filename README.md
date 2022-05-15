@@ -10,6 +10,10 @@ https://qiita.com/hirooooooaki/items/f404e76c6f171769412a
 
 ## show git branch in prompt
 https://snowsystem.net/other/linux/ubuntu-git-branch
+```
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] '
+```
+を~/.bashrcに書く
 
 ## ROS melodic
 http://wiki.ros.org/melodic/Installation/Ubuntu
