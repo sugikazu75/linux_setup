@@ -302,6 +302,8 @@ This function also returns nil meaning don't specify the indentation."
 (when (require 'yaml-mode nil t)
   (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
 
-;;sugihara
+;;sugikazu75
 (load-theme 'tango t)
 (setq scroll-conservatively 1)
+(add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp")
+(require 'rosemacs-config)
