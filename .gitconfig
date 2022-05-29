@@ -1,0 +1,13 @@
+[user]
+	name = sugihara
+	email = sugihara@jsk.imi.i.u-tokyo.ac.jp
+
+[core]
+	editor = emacs -nw
+[http]
+	sslVerify = false
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
