@@ -307,3 +307,6 @@ This function also returns nil meaning don't specify the indentation."
 (setq scroll-conservatively 1)
 (add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp")
 (require 'rosemacs-config)
+
+(setq make-backup-files nil)
+(setq auto-save-default nil)
