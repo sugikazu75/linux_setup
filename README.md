@@ -16,7 +16,7 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(
 # ROS melodic
 http://wiki.ros.org/melodic/Installation/Ubuntu
 ```
-sudo apt install git emacs ros-melodic-euslisp ros-melodic-jskeus
+sudo apt install git emacs ros-melodic-euslisp ros-melodic-jskeus ros-melodic-roseus python-catkin-tools
 ```
 
 # ワークスペースの数を静的にする
