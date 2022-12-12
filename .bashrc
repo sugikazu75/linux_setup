@@ -141,3 +141,9 @@ export LD_LIBRARY_PATH=/home/$USER/.mujoco/mujoco210/bin:$LD_LIBRARY_PATH
 
 #esp-idf
 alias get-idf='. $HOME/esp/esp-idf/export.sh'
+
+
+#convert movie taken by kazam
+ffmpeg_convert(){
+    ffmpeg -i "$1" -pix_fmt yuv420p -c:a copy -movflags +faststart "$2"
+}
