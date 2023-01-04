@@ -13,10 +13,17 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(
 ```
 を~/.bashrcに書く
 
-# ROS melodic
+# ROS
+## melodic
 http://wiki.ros.org/melodic/Installation/Ubuntu
 ```
-sudo apt install git emacs ros-melodic-euslisp ros-melodic-jskeus ros-melodic-roseus python-catkin-tools
+sudo apt install git emacs ros-$ROS_DISTRO-euslisp ros-$ROS_DISTRO-jskeus ros-$ROS_DISTRO-roseus python-catkin-tools
+```
+
+## noetic
+http://wiki.ros.org/noetic/Installation/Ubuntu
+```
+sudo apt install git emacs ros-$ROS_DISTRO-euslisp ros-$ROS_DISTRO-jskeus ros-$ROS_DISTRO-roseus python3-catkin-tools
 ```
 
 # ワークスペースの数を静的にする
