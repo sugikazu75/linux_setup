@@ -51,13 +51,13 @@ for i, (topic, msg, t) in enumerate(bag.read_messages(topics=[pid_topic, flight_
             continue
 
         if t.to_sec() > start_t + offset_t:
-            pose_squared_errors_sum[0] = pose_squared_errors_sum[0] + msg.x.p_error * msg.x.p_error
-            pose_squared_errors_sum[1] = pose_squared_errors_sum[1] + msg.y.p_error * msg.y.p_error
-            pose_squared_errors_sum[2] = pose_squared_errors_sum[2] + msg.z.p_error * msg.z.p_error
+            pose_squared_errors_sum[0] = pose_squared_errors_sum[0] + msg.x.pos_error * msg.x.pos_error
+            pose_squared_errors_sum[1] = pose_squared_errors_sum[1] + msg.y.pos_error * msg.y.pos_error
+            pose_squared_errors_sum[2] = pose_squared_errors_sum[2] + msg.z.pos_error * msg.z.pos_error
 
-            pose_squared_errors_sum[3] = pose_squared_errors_sum[3] + msg.roll.p_error * msg.roll.p_error
-            pose_squared_errors_sum[4] = pose_squared_errors_sum[4] + msg.pitch.p_error * msg.pitch.p_error
-            pose_squared_errors_sum[5] = pose_squared_errors_sum[5] + msg.yaw.p_error * msg.yaw.p_error
+            pose_squared_errors_sum[3] = pose_squared_errors_sum[3] + msg.roll.pos_error * msg.roll.pos_error
+            pose_squared_errors_sum[4] = pose_squared_errors_sum[4] + msg.pitch.pos_error * msg.pitch.pos_error
+            pose_squared_errors_sum[5] = pose_squared_errors_sum[5] + msg.yaw.pos_error * msg.yaw.pos_error
 
             pose_cnt += 1
 
