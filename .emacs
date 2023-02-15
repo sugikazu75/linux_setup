@@ -303,10 +303,8 @@ This function also returns nil meaning don't specify the indentation."
   (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
 
 ;;sugikazu75
-(load-theme 'tango t)
+(load-theme 'tango-dark t)
 (setq scroll-conservatively 1)
-(add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp")
-(require 'rosemacs-config)
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
