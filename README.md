@@ -13,6 +13,9 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(
 ```
 を~/.bashrcに書く
 
+# highlight git diff
+https://qiita.com/SakaiYuki/items/2814d417d0bec59046bb
+
 # ROS
 ## melodic
 http://wiki.ros.org/melodic/Installation/Ubuntu
