@@ -117,8 +117,9 @@ if ! shopt -oq posix; then
 fi
 
 source /opt/ros/melodic/setup.bash
-source ~/ros/kxr_ws/devel/setup.bash
-source ~/catkin_ws/devel/setup.bash
+# source ~/ros/kxr_ws/devel/setup.bash
+# source ~/catkin_ws/devel/setup.bash
+source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
 
 #git branch表示
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] '
@@ -135,6 +136,8 @@ PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'auto_cdls
 
 #user alias
 alias emacs="emacs -nw"
+alias eb="emacs -nw ~/.bashrc"
+alias sb="source ~/.bashrc"
 
 #mujoco_py
 export LD_LIBRARY_PATH=/home/$USER/.mujoco/mujoco210/bin:$LD_LIBRARY_PATH
