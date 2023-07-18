@@ -7,6 +7,11 @@
 
 ;;; Global Setting Key
 ;;;
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-xL" 'goto-line)
@@ -303,8 +308,28 @@ This function also returns nil meaning don't specify the indentation."
   (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
 
 ;;sugikazu75
-(load-theme 'tango-dark t)
 (setq scroll-conservatively 1)
-
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+
+;; rosemacs
+(add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp")
+(require 'rosemacs-config)
+
+;; tex (yatex)
+(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(setq auto-mode-alist
+      (append '(("\\.tex$" . yatex-mode)
+                ("\\.ltx$" . yatex-mode)
+                ("\\.sty$" . yatex-mode)) auto-mode-alist))
+;; set YaTeX coding system
+(setq YaTeX-kanji-code 4) ; UTF-8 の設定
+(add-hook 'yatex-mode-hook
+          '(lambda ()
+             (setq YaTeX-use-AMS-LaTeX t) ; align で数式モードになる
+             (setq YaTeX-use-hilit19 nil
+                   YateX-use-font-lock t)
+             (setq tex-command "em-latexmk.sh") ; typeset command
+             (setq dvi2-command "evince") ; preview command
+             (setq tex-pdfview-command "xdg-open"))) ; preview command
+(setq YaTeX-inhibit-prefix-letter t)
