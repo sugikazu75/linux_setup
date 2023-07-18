@@ -12,7 +12,3 @@
 	br = branch
 	ci = commit
 	tree = log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\"
-[pager]
-        log = diff-highlight | less
-        show = diff-highlight | less
-        diff = diff-highlight | less
