@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source /opt/ros/melodic/setup.bash
+source /opt/ros/noetic/setup.bash
 # source ~/ros/kxr_ws/devel/setup.bash
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
@@ -139,12 +139,8 @@ alias emacs="emacs -nw"
 alias eb="emacs -nw ~/.bashrc"
 alias sb="source ~/.bashrc"
 
-#mujoco_py
-export LD_LIBRARY_PATH=/home/$USER/.mujoco/mujoco210/bin:$LD_LIBRARY_PATH
-
 #esp-idf
 alias get-idf='. $HOME/esp/esp-idf/export.sh'
-
 
 #convert movie taken by kazam
 ffmpeg_convert(){
