@@ -138,6 +138,8 @@ PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'auto_cdls
 alias emacs="emacs -nw"
 alias eb="emacs -nw ~/.bashrc"
 alias sb="source ~/.bashrc"
+alias sl="ls"
+alias ks="ls"
 
 #esp-idf
 alias get-idf='. $HOME/esp/esp-idf/export.sh'
