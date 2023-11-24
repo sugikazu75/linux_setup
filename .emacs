@@ -312,6 +312,13 @@ This function also returns nil meaning don't specify the indentation."
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
+(set-face-background 'mode-line "brightred")
+(set-face-foreground 'mode-line "gray95")
+(global-set-key (kbd "<M-right>") 'windmove-right)
+(global-set-key (kbd "<M-left>") 'windmove-left)
+(global-set-key (kbd "<M-up>") 'windmove-up)
+(global-set-key (kbd "<M-down>") 'windmove-down)
+
 ;; rosemacs
 (add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp")
 (require 'rosemacs-config)
