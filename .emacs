@@ -319,6 +319,16 @@ This function also returns nil meaning don't specify the indentation."
 (global-set-key (kbd "<M-up>") 'windmove-up)
 (global-set-key (kbd "<M-down>") 'windmove-down)
 
+(global-git-gutter-mode)
+(setq git-gutter:added-sign "  ")
+(setq git-gutter:deleted-sign "  ")
+(setq git-gutter:modified-sign "  ")
+(setq git-gutter:unchanged-sign "  ")
+(set-face-background 'git-gutter:added "green")
+(set-face-background 'git-gutter:deleted "red")
+(set-face-background 'git-gutter:modified "cyan")
+(set-face-background 'git-gutter:unchanged "black")
+
 ;; rosemacs
 (add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp")
 (require 'rosemacs-config)
