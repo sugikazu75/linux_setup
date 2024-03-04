@@ -148,3 +148,9 @@ alias get-idf='. $HOME/esp/esp-idf/export.sh'
 ffmpeg_convert(){
     ffmpeg -i "$1" -pix_fmt yuv420p -c:a copy -movflags +faststart "$2"
 }
+
+if [ -z $WSLENV ]; then
+    alias e="xdg-open"
+else
+    alias e="explorer.exe"
+fi
