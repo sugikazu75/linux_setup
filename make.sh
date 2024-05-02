@@ -7,5 +7,5 @@ echo $SCRIPT_DIR
 ln -fnsv ${SCRIPT_DIR}/.bashrc "$HOME"
 ln -fnsv ${SCRIPT_DIR}/.emacs "$HOME"
 ln -fnsv ${SCRIPT_DIR}/.gitconfig "$HOME"
-ln -fnsv ${SCRIPT_DIR}/.gitignore_global  "$HOME/.config/git/ignore"
+mkdir -p $HOME/.config/git && ln -fnsv ${SCRIPT_DIR}/.gitignore_global  "$HOME/.config/git/ignore"
 
