@@ -37,7 +37,6 @@ locate PACKAGE."
 
 (global-set-key "\C-h" 'backward-delete-char)
 (global-unset-key "\C-o" )
-
 ;; use C-q as going to the matching parenthesis
 (require 'paren)
 (show-paren-mode 1)
@@ -51,25 +50,20 @@ locate PACKAGE."
 (global-set-key "\C-Q" 'match-paren)
 
 (setq visible-bell t)
-
-
-;; Japanese
-;; uncommented by ueda. beacuse in shell buffer, they invokes mozibake
-(set-language-environment 'Japanese)
-(prefer-coding-system 'utf-8)
-(setq enable-double-n-syntax t)
-
-(setq use-kuten-for-period nil)
-(setq use-touten-for-comma nil)
-
+(setq ring-bell-function 'ignore)
+(line-number-mode t)
+(column-number-mode t)
 
 (when t
   ;; does not allow use hard tab.
   (setq-default indent-tabs-mode nil)
   )
 
-;; ignore start message
-(setq inhibit-startup-message t)
+;; Japanese
+;; uncommented by ueda. beacuse in shell buffer, they invokes mozibake
+(set-language-environment 'Japanese)
+(prefer-coding-system 'utf-8)
+(setq enable-double-n-syntax t)
 
 ;; shell mode
 (set-terminal-coding-system 'utf-8)
@@ -79,17 +73,6 @@ locate PACKAGE."
 (setq system-uses-terminfo nil)
 (setq shell-file-name-chars "~/A-Za-z0-9_^$!#%&{}@`'.,:()-")
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-(defun lisp-other-window ()
-  "Run lisp on other window"
-  (interactive)
-  (if (not (string= (buffer-name) "*inferior-lisp*"))
-      (switch-to-buffer-other-window
-       (get-buffer-create "*inferior-lisp*")))
-  (run-lisp inferior-euslisp-program))
-
-(set-variable 'inferior-euslisp-program "roseus")
-(global-set-key "\C-cE" 'lisp-other-window)
 
 ;; add color space,tab,zenkaku-space
 (unless (and (boundp '*do-not-show-space*) *do-not-show-space*)
@@ -111,28 +94,7 @@ locate PACKAGE."
   (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
   (ad-activate 'font-lock-mode))
 
-;;Xwindow setting
-(when nil
-  (set-foreground-color "white")
-  (set-background-color "black")
-  (set-scroll-bar-mode 'right)
-  (set-cursor-color "white")
-  )
-;;
-(line-number-mode t)
-(column-number-mode t)
-
-(when nil
-  ;; stop auto scroll according to cursol
-  (setq comint-scroll-show-maximum-output nil))
-
-(setq ring-bell-function 'ignore)
 (setq auto-mode-alist (cons (cons "\\.launch$" 'xml-mode) auto-mode-alist))
-
-;; sudo apt-get install rosemacs-el
-(when (require 'rosemacs nil t)
-  (invoke-rosemacs)
-  (global-set-key "\C-x\C-r" ros-keymap))
 
 ;;sugikazu75
 (setq scroll-conservatively 1)
