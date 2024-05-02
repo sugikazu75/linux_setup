@@ -5,7 +5,7 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-;; automaticaly install required package
+;; automaticaly install required package https://qiita.com/sijiaoh/items/057b682dd29fbbdadd52
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
 If NO-REFRESH is non-nil, the available package lists will not be
