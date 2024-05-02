@@ -149,6 +149,10 @@ ffmpeg_convert(){
     ffmpeg -i "$1" -pix_fmt yuv420p -c:a copy -movflags +faststart "$2"
 }
 
+if [ $WSLENV ]; then
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+fi
+
 if [ -z $WSLENV ]; then
     alias e="xdg-open"
 else
