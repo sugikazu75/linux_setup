@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+# sugikazu75's setting
 source /opt/ros/noetic/setup.bash
 # source ~/ros/kxr_ws/devel/setup.bash
 # source ~/catkin_ws/devel/setup.bash
@@ -140,9 +142,9 @@ alias eb="emacs -nw ~/.bashrc"
 alias sb="source ~/.bashrc"
 alias sl="ls"
 alias ks="ls"
-
-#esp-idf
-alias get-idf='. $HOME/esp/esp-idf/export.sh'
+alias enacs="emacs -nw"
+alias stm32cubeide="/opt/st/stm32cubeide_1.6.1/stm32cubeide"
+export ROSCONSOLE_FORMAT='[${severity}] [${time} ${node}]: ${message}'
 
 #convert movie taken by kazam
 ffmpeg_convert(){
