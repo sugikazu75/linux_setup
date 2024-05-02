@@ -5,6 +5,7 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
+;; automaticaly install required package
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
 If NO-REFRESH is non-nil, the available package lists will not be
@@ -20,6 +21,7 @@ re-downloaded in order to locate PACKAGE."
         (package-refresh-contents)
         (require-package package min-version t)))))
 
+;; automatically install required package and add setting if install is successed
 (defun maybe-require-package (package &optional min-version no-refresh)
   "Try to install PACKAGE, and return non-nil if successful.
 In the event of failure, return nil and print a warning message.
@@ -136,6 +138,7 @@ locate PACKAGE."
 (setq scroll-conservatively 1)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(global-auto-revert-mode 1)
 
 (set-face-background 'mode-line "brightred")
 (set-face-foreground 'mode-line "gray95")
@@ -150,7 +153,6 @@ locate PACKAGE."
 (require 'rosemacs-config)
 
 ;; tex (yatex)
-(require-package 'yatex)
 (when (maybe-require-package 'yatex)
   (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
   (setq auto-mode-alist
@@ -171,7 +173,6 @@ locate PACKAGE."
   )
 
 ;; company: intelisence for emacs
-(require-package 'company)
 (when (maybe-require-package 'company)
   (global-company-mode) ; 全バッファで有効にする
   (setq company-transformers '(company-sort-by-backend-importance)) ;; ソート順
@@ -193,6 +194,7 @@ locate PACKAGE."
   )
 
 
+;; git gutter
 (when (maybe-require-package 'git-gutter)
   (global-git-gutter-mode)
   (setq git-gutter:added-sign "  ")
@@ -204,13 +206,3 @@ locate PACKAGE."
   (set-face-background 'git-gutter:modified "cyan")
   (set-face-background 'git-gutter:unchanged "black")
   )
-
-;; yasnippetとの連携
-(defvar company-mode/enable-yas t
-  "Enable yasnippet for all backends.")
-(defun company-mode/backend-with-yas (backend)
-  (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
-      backend
-    (append (if (consp backend) backend (list backend))
-            '(:with company-yasnippet))))
-(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
