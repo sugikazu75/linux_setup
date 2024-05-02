@@ -118,7 +118,7 @@ fi
 
 
 # sugikazu75's setting
-source /opt/ros/noetic/setup.bash
+source /opt/ros/${ROS_DISTRO}/setup.bash
 # source ~/ros/kxr_ws/devel/setup.bash
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
