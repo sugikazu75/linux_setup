@@ -111,9 +111,8 @@ locate PACKAGE."
 
 
 ;; rosemacs
-(when (require 'rosemacs-config nil t)
-  (add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp")
-  )
+(add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp")
+(require 'rosemacs-config)
 
 ;; tex (yatex)
 (when (maybe-require-package 'yatex)
