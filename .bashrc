@@ -118,7 +118,12 @@ fi
 
 
 # sugikazu75's setting
-source /opt/ros/${ROS_DISTRO}/setup.bash
+if [  $"lsb_release -sr" == "20.04" ]; then
+    source /opt/ros/noetic/setup.bash
+fi
+if [  $"lsb_release -sr" == "18.04" ]; then
+    source /opt/ros/melodic/setup.bash
+fi
 # source ~/ros/kxr_ws/devel/setup.bash
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
