@@ -111,7 +111,21 @@ locate PACKAGE."
 
 
 ;; rosemacs
-(add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp")
+(defun get-ubuntu-version ()
+  "Get Ubuntu version."
+  (let ((version-string (shell-command-to-string "lsb_release -r -s")))
+    (string-to-number (car (split-string version-string "\\.")))))
+(defun rosemacs-add-to-load-path ()
+  "Check Ubuntu version and perform actions accordingly."
+  (let ((ubuntu-version (get-ubuntu-version)))
+    (cond
+     ((= ubuntu-version 20)
+      (add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp"))
+     ((= ubuntu-version 18)
+      (add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp"))
+     (t
+      (message "Your Ubuntu version is too old.")))))
+(ubuntu-version-check)
 (require 'rosemacs-config)
 
 ;; tex (yatex)
