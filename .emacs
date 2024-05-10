@@ -125,7 +125,7 @@ locate PACKAGE."
       (add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp"))
      (t
       (message "Your Ubuntu version is too old.")))))
-(ubuntu-version-check)
+(rosemacs-add-to-load-path)
 (require 'rosemacs-config)
 
 ;; tex (yatex)
