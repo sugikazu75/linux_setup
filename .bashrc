@@ -149,6 +149,8 @@ alias sl="ls"
 alias ks="ls"
 alias enacs="emacs -nw"
 alias stm32cubeide="/opt/st/stm32cubeide_1.6.1/stm32cubeide"
+function rossetaerialrobot { rossetmaster 192.168.1."$1" && rossetip; }
+export -f rossetaerialrobot
 export ROSCONSOLE_FORMAT='[${severity}] [${time} ${node}]: ${message}'
 
 #convert movie taken by kazam
