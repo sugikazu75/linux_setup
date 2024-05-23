@@ -151,6 +151,9 @@ alias enacs="emacs -nw"
 alias stm32cubeide="/opt/st/stm32cubeide_1.6.1/stm32cubeide"
 function rossetaerialrobot { rossetmaster 192.168.1."$1" && rossetip; }
 export -f rossetaerialrobot
+function  sshaerialrobot { ssh leus@192.168.1."$1"; }
+export -f sshaerialrobot
+
 export ROSCONSOLE_FORMAT='[${severity}] [${time} ${node}]: ${message}'
 
 #convert movie taken by kazam
