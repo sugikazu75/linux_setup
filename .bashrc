@@ -153,6 +153,7 @@ function rossetaerialrobot { rossetmaster 192.168.1."$1" && rossetip; }
 export -f rossetaerialrobot
 function  sshaerialrobot { ssh leus@192.168.1."$1"; }
 export -f sshaerialrobot
+alias kill_rosnodes='ps aux | grep ros | grep -v grep | awk "{print \$2}" | xargs kill -9'
 
 export ROSCONSOLE_FORMAT='[${severity}] [${time} ${node}]: ${message}'
 
