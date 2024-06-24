@@ -118,12 +118,13 @@ fi
 
 
 # sugikazu75's setting
-if [  $"lsb_release -sr" == "20.04" ]; then
-    source /opt/ros/noetic/setup.bash
+UBUNTU_VERSION=$(lsb_release -rs)
+if [[ "$UBUNTU_VERSION" == "20.04" ]]; then
+  source /opt/ros/noetic/setup.bash
+elif [[ "$UBUNTU_VERSION" == "18.04" ]]; then
+  source /opt/ros/melodic/setup.bash
 fi
-if [  $"lsb_release -sr" == "18.04" ]; then
-    source /opt/ros/melodic/setup.bash
-fi
+
 # source ~/ros/kxr_ws/devel/setup.bash
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
