@@ -130,7 +130,11 @@ fi
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
 
 #git branch表示
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] '
+function set_ps1_with_ros_ws {
+    local ws_name=$(~/linux_setup/get_ros_workspace_name.sh)
+    export PS1="\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]($ws_name) \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] "
+}
+PROMPT_COMMAND=set_ps1_with_ros_ws
 
 # cdしたらls
 auto_cdls()
