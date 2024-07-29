@@ -129,12 +129,8 @@ fi
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
 
-#git branch表示
-function set_ps1_with_ros_ws {
-    local ws_name="$CMAKE_PREFIX_PATH"
-    export PS1="\n\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;36m\]($ws_name) \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] "
-}
-PROMPT_COMMAND=set_ps1_with_ros_ws
+#git branch, rosworkspace表示
+export PS1='\n\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;36m\]($CMAKE_PREFIX_PATH) \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] '
 
 # cdしたらls
 auto_cdls()
