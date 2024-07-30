@@ -8,4 +8,5 @@ ln -fnsv ${SCRIPT_DIR}/.bashrc "$HOME"
 ln -fnsv ${SCRIPT_DIR}/.emacs "$HOME"
 ln -fnsv ${SCRIPT_DIR}/.gitconfig "$HOME"
 mkdir -p $HOME/.config/git && ln -fnsv ${SCRIPT_DIR}/.gitignore_global  "$HOME/.config/git/ignore"
+ln -fnsv ${SCRIPT_DIR}/.tmux.conf "$HOME"
 
