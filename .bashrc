@@ -129,6 +129,10 @@ fi
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
 
+alias roslaunch='roslaunch 2> >(grep -v TF_REPEATED_DATA >&2)'
+alias rosrun='rosrun 2> > (grep -v TF_REPEATED_DATA >&2) 2> >(grep -v buffer_core >&2) 2> >(grep -v TF_OLD >&2)'
+alias rviz='rviz 2> >(grep -v TF_REPEATED_DATA >&2)'
+
 #git branch, rosworkspace表示
 export PS1='\n\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;36m\]($CMAKE_PREFIX_PATH) \[\033[01;31m\]$(__git_ps1 "(%s)") \n\[\033[01;34m\]\$\[\033[00m\] '
 
