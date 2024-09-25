@@ -1,0 +1,115 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+m",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "extension.dired.enter",
+        "when": "dired.open && !findWidgetVisible && !inQuickOpen"
+    },
+    {
+        "key": "ctrl+x ctrl+f",
+        "command": "extension.dired.open",
+        "when": "editorTextFocus && !inDebugRepl"
+    },
+    {
+        "key": "alt+down",
+        "command": "-editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+up",
+        "command": "-editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+left",
+        "command": "-emacs-mcx.backwardWord",
+        "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
+    },
+    {
+        "key": "alt+left",
+        "command": "-emacs-mcx.backwardWord",
+        "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
+    },
+    {
+        "key": "alt+right",
+        "command": "-emacs-mcx.forwardWord",
+        "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
+    },
+    {
+        "key": "alt+right",
+        "command": "-emacs-mcx.forwardWord",
+        "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
+    },
+    {
+        "key": "ctrl+k down",
+        "command": "-workbench.action.moveActiveEditorGroupDown"
+    },
+    {
+        "key": "ctrl+k left",
+        "command": "-workbench.action.moveActiveEditorGroupLeft"
+    },
+    {
+        "key": "ctrl+k right",
+        "command": "-workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+k up",
+        "command": "-workbench.action.moveActiveEditorGroupUp"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+up",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+down",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "emacs-indent.reindentCurrentLine",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "editor.action.jumpToBracket",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+\\",
+        "command": "-editor.action.jumpToBracket",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u000D" }, // "\u000D" は Enter キー
+        "when": "terminalFocus"
+    },
+]
