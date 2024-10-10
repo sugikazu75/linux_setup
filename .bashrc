@@ -182,4 +182,4 @@ fi
 source ~/.git-prompt.sh
 
 # 自分のフォークしたすべてのリポジトリを取得し、「watch」設定を行う
-gh repo list --fork --json nameWithOwner -q ".[].nameWithOwner" | xargs -I {} gh api -X PUT /repos/{}/subscription -f subscribed=true
+# gh repo list --fork --json nameWithOwner -q ".[].nameWithOwner" | xargs -I {} gh api -X PUT /repos/{}/subscription -f subscribed=true
