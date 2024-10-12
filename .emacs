@@ -102,6 +102,8 @@ locate PACKAGE."
 (setq auto-save-default nil)
 (global-auto-revert-mode 1)
 (setq vc-follow-symlinks nil)
+(setq explicit-shell-file-name "/bin/bash")
+(setq shell-file-name "bash")
 
 (set-face-background 'mode-line "brightred")
 (set-face-foreground 'mode-line "gray95")
