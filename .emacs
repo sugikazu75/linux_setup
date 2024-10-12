@@ -122,6 +122,8 @@ locate PACKAGE."
   "Check Ubuntu version and perform actions accordingly."
   (let ((ubuntu-version (get-ubuntu-version)))
     (cond
+     ((= ubuntu-version 22)
+      (add-to-list 'load-path "/opt/ros/one/share/emacs/site-lisp"))
      ((= ubuntu-version 20)
       (add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp"))
      ((= ubuntu-version 18)
