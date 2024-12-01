@@ -89,7 +89,7 @@
     },
     {
         "key": "ctrl+tab",
-        "command": "emacs-indent.reindentCurrentLine",
+        "command": "emacs-tab.reindentCurrentLine",
         "when": "editorTextFocus"
     },
     {
@@ -111,5 +111,10 @@
         "command": "workbench.action.terminal.sendSequence",
         "args": { "text": "\u000D" }, // "\u000D" は Enter キー
         "when": "terminalFocus"
+    },
+    {
+        "key": "tab",
+        "command": "emacs-tab.reindentCurrentLine",
+        "when": "editorTextFocus"
     },
 ]
