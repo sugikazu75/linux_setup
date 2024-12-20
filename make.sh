@@ -19,4 +19,7 @@ ln -fnsv ${SCRIPT_DIR}/.git-prompt.sh "$HOME"
 if [ $WSLENV ]; then
     sudo ln -fnsv ${SCRIPT_DIR}/wsl.conf /etc/wsl.conf
     sudo ln -fnsv ${SCRIPT_DIR}/wsl_resolv.conf /etc/resolv.conf
+
+    wget http://www.dropbox.com/download?dl=packages/dropbox.py wget -O ${SCRIPT_DIR}/dropbox.py
+    ln -fnsv ${SCRIPT_DIR}/dropbox.py "$HOME"
 fi
