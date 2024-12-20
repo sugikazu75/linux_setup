@@ -102,6 +102,8 @@ locate PACKAGE."
 (setq auto-save-default nil)
 (global-auto-revert-mode 1)
 (setq vc-follow-symlinks nil)
+(setq explicit-shell-file-name "/bin/bash")
+(setq shell-file-name "bash")
 
 (set-face-background 'mode-line "brightred")
 (set-face-foreground 'mode-line "gray95")
@@ -120,6 +122,8 @@ locate PACKAGE."
   "Check Ubuntu version and perform actions accordingly."
   (let ((ubuntu-version (get-ubuntu-version)))
     (cond
+     ((= ubuntu-version 22)
+      (add-to-list 'load-path "/opt/ros/one/share/emacs/site-lisp"))
      ((= ubuntu-version 20)
       (add-to-list 'load-path "/opt/ros/noetic/share/emacs/site-lisp"))
      ((= ubuntu-version 18)
