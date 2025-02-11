@@ -191,3 +191,11 @@ locate PACKAGE."
 (set-face-background 'git-gutter:modified "cyan")
 (set-face-background 'git-gutter:unchanged "black")
 
+;; magit
+(add-to-list 'load-path "~/.emacs.d/manual-packages/compat")
+(add-to-list 'load-path "~/.emacs.d/manual-packages/magit/lisp")
+(add-to-list 'load-path "~/.emacs.d/manual-packages/transient/lisp")
+(add-to-list 'load-path "~/.emacs.d/manual-packages/with-editor/lisp")
+(add-to-list 'load-path "~/.emacs.d/manual-packages/dash.el")
+(require 'compat)
+(require 'magit)
