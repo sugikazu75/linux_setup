@@ -153,6 +153,11 @@ locate PACKAGE."
   (setq YaTeX-inhibit-prefix-letter t)
   )
 
+;; xclip sharing emacs buffer and system buffer
+(when (maybe-require-package 'xclip)
+  (xclip-mode 1)
+  )
+
 ;; company: intelisence for emacs
 (when (maybe-require-package 'company)
   (global-company-mode) ; 全バッファで有効にする
