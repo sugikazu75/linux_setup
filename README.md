@@ -17,3 +17,9 @@ https://magidropack.hatenablog.com/entry/2018/11/30/120602
 
 # convert png to pdf with imagemagit
 https://zenn.dev/yakumo/articles/702d816f8f8f4676a480ca4081627a8c
+
+# share emacs buffer and system buffer
+if gnu package list download is fail:
+```
+gpg --keyserver hkp://keyserver.ubuntu.com:80 --homedir ~/.emacs.d/elpa/gnupg/ --receive-keys your_key
+```
