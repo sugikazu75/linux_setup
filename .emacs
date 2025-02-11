@@ -178,16 +178,16 @@ locate PACKAGE."
   (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
   )
 
+;; git-gutter
+(add-to-list 'load-path "~/.emacs.d/manual-packages/git-gutter")
+(require 'git-gutter)
+(global-git-gutter-mode 1)
+(setq git-gutter:added-sign "  ")
+(setq git-gutter:deleted-sign "  ")
+(setq git-gutter:modified-sign "  ")
+(setq git-gutter:unchanged-sign "  ")
+(set-face-background 'git-gutter:added "green")
+(set-face-background 'git-gutter:deleted "red")
+(set-face-background 'git-gutter:modified "cyan")
+(set-face-background 'git-gutter:unchanged "black")
 
-;; git gutter
-(when (maybe-require-package 'git-gutter)
-  (global-git-gutter-mode)
-  (setq git-gutter:added-sign "  ")
-  (setq git-gutter:deleted-sign "  ")
-  (setq git-gutter:modified-sign "  ")
-  (setq git-gutter:unchanged-sign "  ")
-  (set-face-background 'git-gutter:added "green")
-  (set-face-background 'git-gutter:deleted "red")
-  (set-face-background 'git-gutter:modified "cyan")
-  (set-face-background 'git-gutter:unchanged "black")
-  )
