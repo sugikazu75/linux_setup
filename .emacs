@@ -179,7 +179,7 @@ locate PACKAGE."
   )
 
 ;; git-gutter
-(add-to-list 'load-path "~/.emacs.d/manual-packages/git-gutter")
+(add-to-list 'load-path "~/.emacs.d/manual-packages/git-gutter") ;; git-tag = 0.89
 (require 'git-gutter)
 (global-git-gutter-mode 1)
 (setq git-gutter:added-sign "  ")
@@ -193,7 +193,7 @@ locate PACKAGE."
 
 ;; magit
 (add-to-list 'load-path "~/.emacs.d/manual-packages/compat")
-(add-to-list 'load-path "~/.emacs.d/manual-packages/magit/lisp")
+(add-to-list 'load-path "~/.emacs.d/manual-packages/magit/lisp") ;; git-tag = v4.0.0
 (add-to-list 'load-path "~/.emacs.d/manual-packages/transient/lisp")
 (add-to-list 'load-path "~/.emacs.d/manual-packages/with-editor/lisp")
 (add-to-list 'load-path "~/.emacs.d/manual-packages/dash.el")
