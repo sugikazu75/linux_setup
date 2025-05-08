@@ -178,6 +178,15 @@ locate PACKAGE."
   (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
   )
 
+;; format C and C++ code with clang-format
+(when (maybe-require-package 'clang-format)
+  (setq clang-format-style "file")
+  )
+(defun my-cpp-mode-hook ()
+  (add-hook 'before-save-hook #'clang-format-vc-diff nil t))
+(add-hook 'c++-mode-hook 'my-cpp-mode-hook)
+(add-hook 'c-mode-hook 'my-cpp-mode-hook)
+
 ;; git-gutter
 (add-to-list 'load-path "~/.emacs.d/manual-packages/git-gutter") ;; git-tag = 0.89
 (require 'git-gutter)
