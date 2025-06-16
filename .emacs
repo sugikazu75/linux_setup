@@ -179,13 +179,13 @@ locate PACKAGE."
   )
 
 ;; format C and C++ code with clang-format
-(when (maybe-require-package 'clang-format)
-  (setq clang-format-style "file")
-  )
-(defun my-cpp-mode-hook ()
-  (add-hook 'before-save-hook #'clang-format-vc-diff nil t))
-(add-hook 'c++-mode-hook 'my-cpp-mode-hook)
-(add-hook 'c-mode-hook 'my-cpp-mode-hook)
+;; (when (maybe-require-package 'clang-format)
+;;   (setq clang-format-style "file")
+;;   )
+;; (defun my-cpp-mode-hook ()
+;;   (add-hook 'before-save-hook #'clang-format-vc-diff nil t))
+;; (add-hook 'c++-mode-hook 'my-cpp-mode-hook)
+;; (add-hook 'c-mode-hook 'my-cpp-mode-hook)
 
 ;; git-gutter
 (add-to-list 'load-path "~/.emacs.d/manual-packages/git-gutter") ;; git-tag = 0.89
