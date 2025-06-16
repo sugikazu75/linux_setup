@@ -1,6 +1,7 @@
 sudo apt update
 sudo apt install -y ca-certificates clang-format curl emacs gnupg htop lsb-release net-tools python3-pip python3-setuptools tmux xclip
 pip install pre-commit
+sudo pip install percol
 
 # gh https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \

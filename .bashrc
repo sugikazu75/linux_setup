@@ -186,3 +186,12 @@ source ~/.git-prompt.sh
 
 # 自分のフォークしたすべてのリポジトリを取得し、「watch」設定を行う
 # gh repo list --fork --json nameWithOwner -q ".[].nameWithOwner" | xargs -I {} gh api -X PUT /repos/{}/subscription -f subscribed=true
+
+# history search bindkey
+_replace_by_history() {
+    local l=$(HISTTIMEFORMAT= history | tac | sed -e 's/^\s*[0-9]\+\s\+//' | percol --query "$READLINE_LINE")
+    READLINE_LINE="$l"
+    READLINE_POINT=${#l}
+}
+bind -x '"\C-r": _replace_by_history'
+
