@@ -156,7 +156,8 @@ alias ee="emacs -nw ~/.emacs"
 alias sl="ls"
 alias ks="ls"
 alias enacs="emacs -nw"
-alias stm32cubeide="/opt/st/stm32cubeide_1.6.1/stm32cubeide"
+function stm32cubeide() { /opt/st/stm32cubeide_1.8.0/stm32cubeide "$@"; }
+export -f stm32cubeide
 function rossetaerialrobot { rossetmaster 192.168.1."$1" && rossetip; }
 export -f rossetaerialrobot
 function  sshaerialrobot { ssh leus@192.168.1."$1"; }
