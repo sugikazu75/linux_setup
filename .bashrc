@@ -131,8 +131,8 @@ fi
 # source ~/catkin_ws/devel/setup.bash
 source ~/ros/jsk_aerial_robot_ws/devel/setup.bash
 
-alias roslaunch='roslaunch 2> >(grep -v TF_REPEATED_DATA >&2)'
-alias rosrun='rosrun 2> >(grep -v TF_REPEATED_DATA >&2) 2> >(grep -v buffer_core >&2) 2> >(grep -v TF_OLD >&2)'
+alias roslaunch='roslaunch 2> >(grep -v -e TF_REPEATED_DATA -e "TF lookup failed" >&2)'
+alias rosrun='rosrun 2> >(grep -v -e TF_REPEATED_DATA -e buffer_core -e TF_OLD >&2)'
 alias rviz='rviz 2> >(grep -v TF_REPEATED_DATA >&2)'
 
 #git branch, rosworkspace表示
