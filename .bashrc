@@ -196,3 +196,5 @@ _replace_by_history() {
 }
 bind -x '"\C-r": _replace_by_history'
 
+export DISABLE_ROS1_EOL_WARNINGS=1
+
