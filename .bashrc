@@ -179,8 +179,6 @@ if [ -z $WSLENV ]; then
     alias e="xdg-open"
 else
     alias e="explorer.exe"
-    export LIBGL_ALWAYS_SOFTWARE=1
-    export LIBGL_ALWAYS_INDIRECT=0
 fi
 
 source ~/.git-prompt.sh
