@@ -179,6 +179,7 @@ if [ -z $WSLENV ]; then
     alias e="xdg-open"
 else
     alias e="explorer.exe"
+    export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 fi
 
 source ~/.git-prompt.sh
