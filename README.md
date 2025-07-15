@@ -1,6 +1,6 @@
 # xdg-user-dirs-gtk-update
 ```
-$ LANG=C xdg-user-dirs-gtk-update
+LANG=C xdg-user-dirs-gtk-update
 ```
 
 # windowsと時刻を合わせる
@@ -22,4 +22,9 @@ https://zenn.dev/yakumo/articles/702d816f8f8f4676a480ca4081627a8c
 if gnu package list download is fail:
 ```
 gpg --keyserver hkp://keyserver.ubuntu.com:80 --homedir ~/.emacs.d/elpa/gnupg/ --receive-keys your_key
+```
+
+# wsl mirror mode
+```
+cp .wslconfig /mnt/c/Users/<USER>/.wslconfig
 ```
