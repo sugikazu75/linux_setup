@@ -18,9 +18,10 @@ wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-pro
 ln -fnsv ${SCRIPT_DIR}/.git-prompt.sh "$HOME"
 
 if [ $WSLENV ]; then
-    sudo ln -fnsv ${SCRIPT_DIR}/wsl.conf /etc/wsl.conf
+    sudo rm -rf /etc/wsl.conf
+    sudo cp ${SCRIPT_DIR}/wsl.conf /etc/wsl.conf
     sudo rm -rf /etc/resolv.conf
-    echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+    sudo cp ${SCRIPT_DIR}/resolv.conf /etc/resolv.conf
     wget http://www.dropbox.com/download?dl=packages/dropbox.py wget -O ${SCRIPT_DIR}/dropbox.py
     ln -fnsv ${SCRIPT_DIR}/dropbox.py "$HOME"
 fi
