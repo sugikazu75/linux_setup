@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt install -y ca-certificates clang-format curl emacs gnupg htop lsb-release net-tools python3-pip python3-setuptools tmux x11-apps xclip
+sudo apt install -y ca-certificates clang-format curl emacs git-lfs gnupg htop lsb-release net-tools python3-pip python3-setuptools tmux x11-apps xclip
 pip install pre-commit
 sudo pip install percol
 
