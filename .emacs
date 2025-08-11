@@ -1,6 +1,6 @@
 ;; -*- mode: Emacs-Lisp -*-
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
@@ -178,33 +178,20 @@ locate PACKAGE."
   (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
   )
 
-;; format C and C++ code with clang-format
-;; (when (maybe-require-package 'clang-format)
-;;   (setq clang-format-style "file")
-;;   )
-;; (defun my-cpp-mode-hook ()
-;;   (add-hook 'before-save-hook #'clang-format-vc-diff nil t))
-;; (add-hook 'c++-mode-hook 'my-cpp-mode-hook)
-;; (add-hook 'c-mode-hook 'my-cpp-mode-hook)
-
 ;; git-gutter
-(add-to-list 'load-path "~/.emacs.d/manual-packages/git-gutter") ;; git-tag = 0.89
-(require 'git-gutter)
-(global-git-gutter-mode 1)
-(setq git-gutter:added-sign "  ")
-(setq git-gutter:deleted-sign "  ")
-(setq git-gutter:modified-sign "  ")
-(setq git-gutter:unchanged-sign "  ")
-(set-face-background 'git-gutter:added "green")
-(set-face-background 'git-gutter:deleted "red")
-(set-face-background 'git-gutter:modified "cyan")
-(set-face-background 'git-gutter:unchanged "black")
+(when (maybe-require-package 'git-gutter)
+  (require 'git-gutter)
+  (global-git-gutter-mode 1)
+  (setq git-gutter:added-sign "  ")
+  (setq git-gutter:deleted-sign "  ")
+  (setq git-gutter:modified-sign "  ")
+  (setq git-gutter:unchanged-sign "  ")
+  (set-face-background 'git-gutter:added "green")
+  (set-face-background 'git-gutter:deleted "red")
+  (set-face-background 'git-gutter:modified "cyan")
+  (set-face-background 'git-gutter:unchanged "black")
+  )
 
 ;; magit
-(add-to-list 'load-path "~/.emacs.d/manual-packages/compat")
-(add-to-list 'load-path "~/.emacs.d/manual-packages/magit/lisp") ;; git-tag = v4.0.0
-(add-to-list 'load-path "~/.emacs.d/manual-packages/transient/lisp")
-(add-to-list 'load-path "~/.emacs.d/manual-packages/with-editor/lisp")
-(add-to-list 'load-path "~/.emacs.d/manual-packages/dash.el")
-(require 'compat)
-(require 'magit)
+(when (maybe-require-package 'magit)
+  )
