@@ -33,6 +33,22 @@ locate PACKAGE."
      (message "Couldn't install optional package `%s': %S" package err)
      nil)))
 
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 
 (global-set-key "\C-h" 'backward-delete-char)
 (global-unset-key "\C-o" )
@@ -195,3 +211,13 @@ locate PACKAGE."
 ;; magit
 (when (maybe-require-package 'magit)
   )
+
+;; copilot
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure t)
+(add-hook 'prog-mode-hook 'copilot-mode)
+(define-key copilot-completion-map (kbd "\C-m") 'copilot-accept-completion)
+(setq copilot-lsp-settings '(:github-enterprise (:uri "https://example2.ghe.com"))) ;; alternatively
