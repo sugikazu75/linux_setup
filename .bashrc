@@ -155,6 +155,7 @@ alias sb="source ~/.bashrc"
 alias ee="emacs -nw ~/.emacs"
 alias sl="ls"
 alias ks="ls"
+alias lh="ls -lh"
 alias enacs="emacs -nw"
 function stm32cubeide() { /opt/st/stm32cubeide_1.8.0/stm32cubeide "$@"; }
 export -f stm32cubeide
