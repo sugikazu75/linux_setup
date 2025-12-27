@@ -172,10 +172,6 @@ ffmpeg_convert(){
     ffmpeg -i "$1" -pix_fmt yuv420p -c:a copy -movflags +faststart "$2"
 }
 
-if [ $WSLENV ]; then
-    export DISPLAY=$(ipconfig.exe |  iconv -f CP932 -t UTF-8 | sed -e 's/\r//' | grep 'IPv4'| tail -n 1 | cut -d ':' -f 2 | awk '{print $1}'):0
-fi
-
 if [ -z $WSLENV ]; then
     alias e="xdg-open"
 else
