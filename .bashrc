@@ -119,7 +119,9 @@ fi
 
 # sugikazu75's setting
 UBUNTU_VERSION=$(lsb_release -rs)
-if [[ "$UBUNTU_VERSION" == "22.04" ]]; then
+if [[ "$UBUNTU_VERSION" == "24.04" ]]; then
+    source /opt/ros/one/setup.bash
+elif [[ "$UBUNTU_VERSION" == "22.04" ]]; then
     source /opt/ros/one/setup.bash
 elif [[ "$UBUNTU_VERSION" == "20.04" ]]; then
   source /opt/ros/noetic/setup.bash
