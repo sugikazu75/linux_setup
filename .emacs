@@ -1,54 +1,4 @@
 ;; -*- mode: Emacs-Lisp -*-
-(require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(package-initialize)
-
-;; automaticaly install required package https://qiita.com/sijiaoh/items/057b682dd29fbbdadd52
-(defun require-package (package &optional min-version no-refresh)
-  "Install given PACKAGE, optionally requiring MIN-VERSION.
-If NO-REFRESH is non-nil, the available package lists will not be
-re-downloaded in order to locate PACKAGE."
-  (if (package-installed-p package min-version)
-      t
-    (if (or (assoc package package-archive-contents) no-refresh)
-        (if (boundp 'package-selected-packages)
-            ;; Record this as a package the user installed explicitly
-            (package-install package nil)
-          (package-install package))
-      (progn
-        (package-refresh-contents)
-        (require-package package min-version t)))))
-
-;; automatically install required package and add setting if install is successed
-(defun maybe-require-package (package &optional min-version no-refresh)
-  "Try to install PACKAGE, and return non-nil if successful.
-In the event of failure, return nil and print a warning message.
-Optionally require MIN-VERSION.  If NO-REFRESH is non-nil, the
-available package lists will not be re-downloaded in order to
-locate PACKAGE."
-  (condition-case err
-      (require-package package min-version no-refresh)
-    (error
-     (message "Couldn't install optional package `%s': %S" package err)
-     nil)))
-
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
-            user-emacs-directory)))
-      (bootstrap-version 7))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
 
 (global-set-key "\C-h" 'backward-delete-char)
 (global-unset-key "\C-o" )
@@ -127,6 +77,22 @@ locate PACKAGE."
 (global-set-key (kbd "<M-up>") 'windmove-up)
 (global-set-key (kbd "<M-down>") 'windmove-down)
 
+;; package settings
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 ;; rosemacs
 (defun get-ubuntu-version ()
@@ -150,76 +116,51 @@ locate PACKAGE."
 (rosemacs-add-to-load-path)
 (require 'rosemacs-config)
 
-;; tex (yatex)
-(when (maybe-require-package 'yatex)
-  (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-  (setq auto-mode-alist
-        (append '(("\\.tex$" . yatex-mode)
-                  ("\\.ltx$" . yatex-mode)
-                  ("\\.sty$" . yatex-mode)) auto-mode-alist))
-  (require-package 'company)
-  (setq YaTeX-kanji-code 4) ; UTF-8 の設定
-  (add-hook 'yatex-mode-hook
-            '(lambda ()
-               (setq YaTeX-use-AMS-LaTeX t) ; align で数式モードになる
-               (setq YaTeX-use-hilit19 nil
-                     YateX-use-font-lock t)
-               (setq tex-command "em-latexmk.sh") ; typeset command
-               (setq dvi2-command "evince") ; preview command
-               (setq tex-pdfview-command "xdg-open"))) ; preview command
-  (setq YaTeX-inhibit-prefix-letter t)
-  )
-
 ;; xclip sharing emacs buffer and system buffer
-(when (maybe-require-package 'xclip)
-  (xclip-mode 1)
-  )
+(straight-use-package 'xclip)
+(xclip-mode 1)
 
 ;; company: intelisence for emacs
-(when (maybe-require-package 'company)
-  (global-company-mode) ; 全バッファで有効にする
-  (setq company-transformers '(company-sort-by-backend-importance)) ;; ソート順
-  (setq company-idle-delay 0) ; デフォルトは0.5
-  (setq company-minimum-prefix-length 3) ; デフォルトは4
-  (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
-  (setq completion-ignore-case t)
-  (setq company-dabbrev-downcase nil)
-  (global-set-key (kbd "C-M-i") 'company-complete)
-  (define-key company-active-map (kbd "C-n") 'company-select-next) ;; C-n, C-pで補完候補を次/前の候補を選択
-  (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key company-search-map (kbd "C-n") 'company-select-next)
-  (define-key company-search-map (kbd "C-p") 'company-select-previous)
-  (define-key company-active-map (kbd "C-s") 'company-filter-candidates) ;; C-sで絞り込む
-  (define-key company-active-map (kbd "C-i") 'company-complete-selection) ;; TABで候補を設定
-  (define-key company-active-map [tab] 'company-complete-selection) ;; TABで候補を設定
-  (define-key company-active-map (kbd "C-f") 'company-complete-selection) ;; C-fで候補を設定
-  (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
-  )
+(straight-use-package 'company)
+(global-company-mode) ; 全バッファで有効にする
+(setq company-transformers '(company-sort-by-backend-importance)) ;; ソート順
+(setq company-idle-delay 0) ; デフォルトは0.5
+(setq company-minimum-prefix-length 3) ; デフォルトは4
+(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+(setq completion-ignore-case t)
+(setq company-dabbrev-downcase nil)
+(global-set-key (kbd "C-M-i") 'company-complete)
+(define-key company-active-map (kbd "C-n") 'company-select-next) ;; C-n, C-pで補完候補を次/前の候補を選択
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+(define-key company-search-map (kbd "C-n") 'company-select-next)
+(define-key company-search-map (kbd "C-p") 'company-select-previous)
+(define-key company-active-map (kbd "C-s") 'company-filter-candidates) ;; C-sで絞り込む
+(define-key company-active-map (kbd "C-i") 'company-complete-selection) ;; TABで候補を設定
+(define-key company-active-map [tab] 'company-complete-selection) ;; TABで候補を設定
+(define-key company-active-map (kbd "C-f") 'company-complete-selection) ;; C-fで候補を設定
+(define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
 
-;; git-gutter
-(when (maybe-require-package 'git-gutter)
-  (require 'git-gutter)
-  (global-git-gutter-mode 1)
-  (setq git-gutter:added-sign "  ")
-  (setq git-gutter:deleted-sign "  ")
-  (setq git-gutter:modified-sign "  ")
-  (setq git-gutter:unchanged-sign "  ")
-  (set-face-background 'git-gutter:added "green")
-  (set-face-background 'git-gutter:deleted "red")
-  (set-face-background 'git-gutter:modified "cyan")
-  (set-face-background 'git-gutter:unchanged "black")
-  )
+;; diff-hl
+(set-face-background 'fringe "black")
+(straight-use-package 'diff-hl)
+(global-diff-hl-mode)
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+(unless (window-system) (diff-hl-margin-mode))
+;; (diff-hl-change ((t (:foreground "cyan"  :background "cyan"))))
+;; (diff-hl-delete ((t (:foreground "red"   :background "red"))))
+;; (diff-hl-insert ((t (:foreground "green" :background "green"))))
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 ;; magit
-(when (maybe-require-package 'magit)
-  )
+(straight-use-package 'magit)
 
 ;; copilot
-(straight-use-package 'use-package)
-(setq straight-use-package-by-default t)
-(use-package copilot
-  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
-  :ensure t)
+(straight-use-package
+ '(copilot :host github
+           :repo "sugikazu75/copilot.el"
+           :files ("*.el")))
 (add-hook 'prog-mode-hook 'copilot-mode)
-(define-key copilot-completion-map (kbd "\C-m") 'copilot-accept-completion)
+(with-eval-after-load 'copilot
+  (define-key copilot-completion-map (kbd "C-m") 'copilot-accept-completion))
 ;; (setq copilot-lsp-settings '(:github-enterprise (:uri "https://example2.ghe.com"))) ;; alternatively
