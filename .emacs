@@ -141,14 +141,33 @@
 (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
 
 ;; diff-hl
-(set-face-background 'fringe "black")
 (straight-use-package 'diff-hl)
+;; diff-hl-margin-local-mode が実行された直後に幅を上書きする関数
+(defun my-override-diff-hl-margin-width (&rest _args)
+  (when diff-hl-margin-local-mode
+    ;; diff-hl-side（left か right）に合わせて変数を特定
+    (let ((width-var (intern (format "%s-margin-width" diff-hl-side))))
+      ;; set width to 2
+      (set width-var 2)
+      ;; ウィンドウの表示を更新して反映させる
+      (dolist (win (get-buffer-window-list))
+        (set-window-buffer win (current-buffer))))))
+;; diff-hl-margin-local-mode の後ろ（:after）にこの処理を引っ掛ける
+(advice-add 'diff-hl-margin-local-mode :after #'my-override-diff-hl-margin-width)
+
+(custom-set-faces
+ '(diff-hl-change ((t (:foreground "cyan" :background "cyan"))))
+ '(diff-hl-insert ((t (:foreground "green" :background "green"))))
+ '(diff-hl-delete ((t (:foreground "red" :background "red")))))
+(setq diff-hl-margin-symbols-alist
+      '((insert . "  ")
+        (delete . "  ")
+        (change . " ")
+        (unknown . " ")
+        (ignored . " ")))
 (global-diff-hl-mode)
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 (unless (window-system) (diff-hl-margin-mode))
-;; (diff-hl-change ((t (:foreground "cyan"  :background "cyan"))))
-;; (diff-hl-delete ((t (:foreground "red"   :background "red"))))
-;; (diff-hl-insert ((t (:foreground "green" :background "green"))))
 (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
