@@ -162,12 +162,13 @@
 (setq diff-hl-margin-symbols-alist
       '((insert . "  ")
         (delete . "  ")
-        (change . " ")
-        (unknown . " ")
-        (ignored . " ")))
+        (change . "  ")
+        (unknown . "  ")
+        (ignored . "  ")))
 (global-diff-hl-mode)
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 (unless (window-system) (diff-hl-margin-mode))
+(diff-hl-flydiff-mode)
 (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
