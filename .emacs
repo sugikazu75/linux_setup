@@ -175,11 +175,18 @@
 ;; magit
 (straight-use-package 'magit)
 
+;; project for copilot
+(straight-use-package 'project)
+(unless (fboundp 'project-root)
+  (defun project-root (project)
+    (car (project-roots project))))
+
 ;; copilot
 (straight-use-package
  '(copilot :host github
            :repo "sugikazu75/copilot.el"
            :files ("*.el")))
+(setq copilot-indent-offset-warning-disable t)
 (add-hook 'prog-mode-hook 'copilot-mode)
 (with-eval-after-load 'copilot
   (define-key copilot-completion-map (kbd "C-m") 'copilot-accept-completion))
