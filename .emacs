@@ -184,7 +184,7 @@
 ;; copilot
 (straight-use-package
  '(copilot :host github
-           :repo "sugikazu75/copilot.el"
+           :repo "copilot-emacs/copilot.el"
            :files ("*.el")))
 (setq copilot-indent-offset-warning-disable t)
 (add-hook 'prog-mode-hook 'copilot-mode)
