@@ -179,6 +179,19 @@ if [ -z $WSLENV ]; then
 else
     alias e="explorer.exe"
     export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+
+    gdrive_mount() {
+        local drive_letter=G
+        local mount_point=/mnt/g
+
+        # create mount point if it doesn't exist
+        if [ ! -d "$mount_point" ]; then
+            echo "Creating mount point: $mount_point"
+            sudo mkdir -p "$mount_point"
+        fi
+        # mount the drive
+        sudo mount -t drvfs ${drive_letter}: ${mount_point} && echo "Drive $drive_letter mounted to $mount_point"
+    }
 fi
 
 source ~/.git-prompt.sh
