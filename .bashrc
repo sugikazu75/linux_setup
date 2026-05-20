@@ -174,6 +174,25 @@ ffmpeg_convert(){
     ffmpeg -i "$1" -pix_fmt yuv420p -c:a copy -movflags +faststart "$2"
 }
 
+# mp4 speed change
+png_transparent(){
+    ffmpeg -i $1 -vf "colorkey=white:0.01:0.0" -c:v png -preset slow $2
+}
+
+# mp4 trim
+ffmpeg_trim(){
+    ffmpeg -ss "$2" -i "$1"  -t "$3" "$4" -y
+}
+
+# convert svg to png
+svg2png(){
+    convert -density 300 "$1" "$2"
+}
+
+# mp4 speed change function
+source ~/linux_setup/utils/mp4_speed_change.sh
+
+
 if [ -z $WSLENV ]; then
     alias e="xdg-open"
 else
