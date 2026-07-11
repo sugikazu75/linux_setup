@@ -184,6 +184,11 @@ ffmpeg_trim(){
     ffmpeg -ss "$2" -i "$1"  -t "$3" "$4" -y
 }
 
+# extract 1 frame as png. usage: video_frame <input> <time> <output.png> [x y width height]
+video_frame(){
+    ffmpeg -ss "$2" -i "$1" -vf "crop=${6:-iw}:${7:-ih}:${4:-0}:${5:-0}" -frames:v 1 "$3" -y
+}
+
 # convert svg to png
 svg2png(){
     convert -density 300 "$1" "$2"
@@ -191,6 +196,9 @@ svg2png(){
 
 # mp4 speed change function
 source ~/linux_setup/utils/mp4_speed_change.sh
+
+# video to gif function
+source ~/linux_setup/utils/video_to_gif.sh
 
 
 if [ -z $WSLENV ]; then
