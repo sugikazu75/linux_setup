@@ -28,3 +28,19 @@ gpg --keyserver hkp://keyserver.ubuntu.com:80 --homedir ~/.emacs.d/elpa/gnupg/ -
 ```
 cp .wslconfig /mnt/c/Users/<USER>/.wslconfig
 ```
+
+# Powershellをubuntu風キーバインドにする
+```
+if (!(Test-Path $PROFILE)) { New-Item -Path $PROFILE -ItemType File -Force }
+notepad $PROFILE
+```
+で出てきたメモ帳に
+```
+Set-PSReadLineOption -EditMode Emacs
+
+# bashにさらに寄せたい場合(お好みで)
+Set-PSReadLineKeyHandler -Chord Ctrl+w -Function UnixWordRubout   # 空白区切りで1語削除
+Set-PSReadLineKeyHandler -Chord Tab    -Function Complete         # bash風の補完
+Set-PSReadLineOption -BellStyle None                              # ビープ音を消す
+```
+を書く
